@@ -184,7 +184,7 @@
 </head>
 <body>
 <main>
-  <p class="eyebrow">nba.shiny · account setup</p>
+  <p class="eyebrow">account setup</p>
   <h1>Connect your ESPN league</h1>
   <p class="lede">Three steps, about two minutes. Nothing here reads or sends anything on its own &mdash; you stay in control of what gets shared and when.</p>
 
@@ -195,9 +195,9 @@
       <p>A small program that checks your browser for your existing ESPN login &mdash; it doesn't ask for your password.</p>
       <a class="btn" id="download-btn" href="#">Download for your device</a>
       <p id="other-os" style="margin-top: 0.75rem; font-size: 0.85rem;">
-        Not the right one? <a href="https://github.com/shaggycamel/nba_fty_cookies/releases/latest/download/get_espn_credentials-windows.exe">Windows</a> ·
-        <a href="https://github.com/shaggycamel/nba_fty_cookies/releases/latest/download/get_espn_credentials-macos">macOS</a> ·
-        <a href="https://github.com/shaggycamel/nba_fty_cookies/releases/latest/download/get_espn_credentials-linux">Linux</a>
+        Not the right one? <a href="https://github.com/shaggycamel/scs.nba.fty.customer/releases/latest/download/get_espn_credentials-windows.exe">Windows</a> ·
+        <a href="https://github.com/shaggycamel/scs.nba.fty.customer/releases/latest/download/get_espn_credentials-macos">macOS</a> ·
+        <a href="https://github.com/shaggycamel/scs.nba.fty.customer/releases/latest/download/get_espn_credentials-linux">Linux</a>
       </p>
     </div>
   </div>
@@ -248,7 +248,7 @@
 
   const detected = detectOS();
   const downloadBtn = document.getElementById('download-btn');
-  downloadBtn.href = `https://github.com/shaggycamel/nba_fty_cookies/releases/latest/download/${detected.asset}`;
+  downloadBtn.href = `https://github.com/shaggycamel/scs.nba.fty.customer/releases/latest/download/${detected.asset}`;
   downloadBtn.textContent = detected.label;
 
   function copyField(id) {
