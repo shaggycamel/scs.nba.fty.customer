@@ -20,7 +20,9 @@ import sys
 try:
     import browser_cookie3
 except ImportError:
-    print("Missing dependency. Install it first with:\n\n    pip install browser-cookie3\n")
+    print(
+        "Missing dependency. Install it first with:\n\n    pip install browser-cookie3\n"
+    )
     sys.exit(1)
 
 
@@ -33,30 +35,31 @@ BROWSERS = [
 ]
 
 
-def find_espn_cookies():
+def find_espn_cookies() -> tuple[str | None, str | None, str | None]:
     for name, loader in BROWSERS:
         if loader is None:
             continue
         try:
             cj = loader(domain_name="espn.com")
-        except Exception:
-            continue
+        except (browser_cookie3.BrowserCookieError, OSError) as exc:
+            print(f"  {name}: {exc}")
 
-        swid = None
-        espn_s2 = None
-        for cookie in cj:
-            if cookie.name == "SWID":
-                swid = cookie.value
-            elif cookie.name == "espn_s2":
-                espn_s2 = cookie.value
+        else:
+            swid = None
+            espn_s2 = None
+            for cookie in cj:
+                if cookie.name == "SWID":
+                    swid = cookie.value
+                elif cookie.name == "espn_s2":
+                    espn_s2 = cookie.value
 
-        if swid and espn_s2:
-            return name, swid, espn_s2
+            if swid and espn_s2:
+                return name, swid, espn_s2
 
     return None, None, None
 
 
-def main():
+def main() -> None:
     print("Looking for ESPN Fantasy login cookies in your browsers...\n")
     browser_name, swid, espn_s2 = find_espn_cookies()
 
